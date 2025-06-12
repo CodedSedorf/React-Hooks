@@ -10,6 +10,8 @@ const Signup = () => {
     gender: "",
   });
   const [isSubmitted, setisSubmitted] = useState(false);
+  const [isEditing, setEditing] = useState(false);
+  const [counter, setcounter] = useState(0);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,6 +23,7 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setisSubmitted(true);
+    setEditing(false);
   };
 
   const reset = () => {
@@ -34,19 +37,41 @@ const Signup = () => {
     setisSubmitted(false);
   };
 
+  // const edit = () => {
+  //   setregisterUser({
+  //     firstname: prompt("enter firstname"),
+  //     lastname: prompt("enter lastname"),
+  //     email: prompt("enter valid email"),
+  //     password: prompt("enter new password"),
+  //     gender: prompt("enter gender"),
+  //   });
+  // };
+
   const edit = () => {
-    setregisterUser({
-      firstname: prompt("enter firstname"),
-      lastname: prompt("enter lastname"),
-      email: prompt("enter valid email"),
-      password: prompt("enter new password"),
-      gender: prompt("enter gender"),
-    });
+    setisSubmitted(false);
+    setEditing(true);
+  };
+  const increaseCount = () => {
+    setcounter((prev) => prev + 1);
+    setcounter((prev) => prev + 1);
+    setcounter((prev) => prev + 1);
+    setcounter((prev) => prev + 1);
+    setcounter((prev) => prev + 1);
+  };
+  const decreaseCount = () => {
+    setcounter((counter) => counter - 1);
+    setcounter((counter) => counter - 1);
+    setcounter((counter) => counter - 1);
+    setcounter((counter) => counter - 1);
+    setcounter((counter) => counter - 1);
   };
   return (
     <>
       {!isSubmitted ? (
         <div className="">
+          <h1 className="text-center text-5xl text-blue-800 ">
+            {!isEditing ? "Signup" : "Edit Profile"}
+          </h1>
           <form
             action=""
             className="flex flex-col mb-40 text-center ml-72 leading-10"
@@ -123,6 +148,31 @@ const Signup = () => {
           </div>
         </div>
       )}
+
+      {/* ........Editing logic.............. */}
+      {isEditing ? (
+        <div>
+          <h1>Edit Profile</h1>
+        </div>
+      ) : (
+        ""
+      )}
+
+      <h1 className="text-red-700 text-5xl w-1/6 rounded-full px-4 py-4 mt-10 bg-black text-center">
+        {counter}
+      </h1>
+      <button
+        onClick={decreaseCount}
+        className="text-blue-700 text-5xl rounded-full px-4 py-4 mt-10 bg-black text-center"
+      >
+        Decrease Count
+      </button>
+      <button
+        onClick={increaseCount}
+        className="text-blue-700 text-5xl rounded-full px-4 py-4 mt-10 bg-black text-center"
+      >
+        Increase Count
+      </button>
     </>
   );
 };
