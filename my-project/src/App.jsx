@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PracticeState from "./Component/UseState/PracticeState";
 import Signup from "./Component/UseState/Signup";
+import QuizApp from "./Component/QuizApp";
 
 const App = () => {
   const [color, setcolor] = useState("Red");
@@ -72,6 +73,7 @@ const App = () => {
 
       <PracticeState />
       <Signup />
+      <QuizApp />
     </>
   );
 };
