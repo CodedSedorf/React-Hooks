@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import QuizApp from "../Components/QuizApp";
+import MyQuizApp from "./Component/MyQuizApp";
 
 const App = () => {
   const [count, setcount] = useState(0);
@@ -21,6 +22,7 @@ const App = () => {
       </p>
 
       <QuizApp />
+      <MyQuizApp />
     </>
   );
 };
